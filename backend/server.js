@@ -4,7 +4,12 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 import cors from "cors";
-app.use(cors());
+app.use(
+  cors({
+    origin: process.env.FRONTEND_URL,
+    credentials: true,
+  })
+);
 
 import bodyParser from "body-parser";
 app.use(bodyParser.json());

@@ -83,6 +83,13 @@ export const UserController = {
         { expiresIn: "8h" }
       );
 
+      res.cookie("token", token, {
+        httpOnly: true, // ปลอดภัย: script อ่านไม่ได้
+        secure: process.env.NODE_ENV === "production", // ใช้ HTTPS เท่านั้นใน production
+        sameSite: "strict",
+        maxAge: 8 * 60 * 60 * 1000, // 8 ชั่วโมง
+      });
+
       res.status(200).json({
         token,
         name: user.name,
