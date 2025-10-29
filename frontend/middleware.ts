@@ -9,7 +9,7 @@ export function middleware(req: NextRequest) {
   // ถ้าไม่มี token และพยายามเข้า /backoffice
   if (!token && pathname.startsWith("/backoffice")) {
     const url = req.nextUrl.clone();
-    url.pathname = "/login";
+    url.pathname = "/signin";
     return NextResponse.redirect(url);
   }
 
