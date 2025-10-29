@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, use } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { apiConfig } from '@/app/config';
 import Swal from 'sweetalert2';

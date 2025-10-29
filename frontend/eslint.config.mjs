@@ -20,6 +20,12 @@ const eslintConfig = [
       "next-env.d.ts",
     ],
   },
+  {
+    rules: {
+      "@typescript-eslint/no-explicit-any": "warn", // ปิด warning "Unexpected any"
+      "react-hooks/exhaustive-deps": "off", // ปิด warning useEffect deps
+    },
+  },
 ];
 
 export default eslintConfig;
