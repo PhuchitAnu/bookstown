@@ -3,9 +3,9 @@ export const getCart = () => {
   return JSON.parse(localStorage.getItem("cart") || "[]");
 };
 
-export const addToCart = (book) => {
+export const addToCart = (book: any) => {
   const cart = getCart();
-  const existingItem = cart.find((item) => item.id === book.id);
+  const existingItem = cart.find((item: any) => item.id === book.id);
 
   if (existingItem) {
     existingItem.quantity += 1;
