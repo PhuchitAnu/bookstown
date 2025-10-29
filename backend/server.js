@@ -24,7 +24,9 @@ import { authenticateToken } from "./middlewares/auth.js";
 // test
 //
 app.get("/", (req, res) => {
-  res.json("Hello World!");
+  res.json({
+    message: "Hello World!",
+  });
 });
 
 //
