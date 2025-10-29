@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import Search from "../components/Search";
+import { Suspense } from "react";
 
 export default function Header() {
     const router = useRouter();
@@ -22,7 +23,9 @@ export default function Header() {
             </div>
 
             {/* 🔍 Search bar */}
-            <Search />
+            <Suspense>
+                <Search />
+            </Suspense >
 
             {/* 🧭 ไอคอนเมนู */}
             <nav className="flex items-center gap-6 sm:gap-8">
