@@ -25,7 +25,7 @@ export function middleware(req: NextRequest) {
       }
     } catch (err) {
       const url = req.nextUrl.clone();
-      url.pathname = "/login";
+      url.pathname = "/signin";
       return NextResponse.redirect(url);
     }
   }
