@@ -18,6 +18,7 @@ interface User {
     username?: string;
     avatar?: string;
     joinedDate?: string;
+    password?: string;
 }
 
 interface Order {
