@@ -5,18 +5,20 @@ import fs from "fs";
 import FormData from "form-data";
 
 const router = express.Router();
-const upload = multer({ dest: "uploads/" });
+const storage = multer.memoryStorage();
+const upload = multer({ storage });
 
 const SLIPOK_BRANCH_ID = process.env.SLIPOK_BRANCH_ID;
 const SLIPOK_API_KEY = process.env.SLIPOK_API_KEY;
 
 router.post("/verify-slip", upload.single("file"), async (req, res) => {
   try {
-    const filePath = req.file.path;
+    const fileBuffer = req.file.buffer;
+    const originalName = req.file.originalname;
     const amount = Number(req.body.amount);
 
     const formData = new FormData();
-    formData.append("files", fs.createReadStream(filePath));
+    formData.append("files", fileBuffer, originalName);
     formData.append("amount", amount);
     formData.append("log", "true");
 
@@ -43,12 +45,6 @@ router.post("/verify-slip", upload.single("file"), async (req, res) => {
       status: "fail",
       message: err.response?.data?.message || "ตรวจสอบสลิปไม่สำเร็จ",
     });
-  } finally {
-    try {
-      fs.unlinkSync(filePath);
-    } catch (unlinkErr) {
-      console.error("ลบไฟล์ไม่สำเร็จ:", unlinkErr.message);
-    }
   }
 });
 
