@@ -1,3 +1,3 @@
 export const apiConfig = {
-  apiUrl: "http://localhost:3001/api",
+  apiUrl: `${process.env.NEXT_PUBLIC_BACKEND_URL}/api`,
 };
