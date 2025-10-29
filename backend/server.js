@@ -21,6 +21,13 @@ import { OrderController } from "./controllers/OrderController.js";
 import { authenticateToken } from "./middlewares/auth.js";
 
 //
+// test
+//
+app.get("/", (req, res) => {
+  res.json("Hello World!");
+});
+
+//
 // User
 //
 app.post("/api/user/register", UserController.register);
