@@ -84,7 +84,7 @@ export const UserController = {
       );
 
       res.cookie("token", token, {
-        httpOnly: false,
+        httpOnly: true,
         secure: true, // ใช้ HTTPS เท่านั้นใน production
         sameSite: "none",
         maxAge: 8 * 60 * 60 * 1000, // 8 ชั่วโมง
@@ -106,7 +106,7 @@ export const UserController = {
     try {
       res.clearCookie("token", {
         path: "/", // ต้องตรงกับ path ตอน login
-        httpOnly: false, // ถ้า login cookie httpOnly ต้องลบ httpOnly ด้วย
+        httpOnly: true, // ถ้า login cookie httpOnly ต้องลบ httpOnly ด้วย
         secure: true,
         sameSite: "none",
       });
