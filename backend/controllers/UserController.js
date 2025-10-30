@@ -85,7 +85,7 @@ export const UserController = {
 
       res.cookie("token", token, {
         httpOnly: true,
-        secure: process.env.NODE_ENV === "production", // ใช้ HTTPS เท่านั้นใน production
+        secure: true, // ใช้ HTTPS เท่านั้นใน production
         sameSite: "none",
         maxAge: 8 * 60 * 60 * 1000, // 8 ชั่วโมง
         path: "/",
