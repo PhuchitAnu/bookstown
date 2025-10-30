@@ -85,8 +85,8 @@ export const UserController = {
 
       res.cookie("token", token, {
         httpOnly: false,
-        secure: process.env.NODE_ENV === "production", // ใช้ HTTPS เท่านั้นใน production
-        sameSite: "strict",
+        secure: true, // ใช้ HTTPS เท่านั้นใน production
+        sameSite: "lax",
         maxAge: 8 * 60 * 60 * 1000, // 8 ชั่วโมง
         path: "/",
       });
@@ -106,8 +106,9 @@ export const UserController = {
     try {
       res.clearCookie("token", {
         path: "/", // ต้องตรงกับ path ตอน login
-        httpOnly: true, // ถ้า login cookie httpOnly ต้องลบ httpOnly ด้วย
-        sameSite: "strict",
+        httpOnly: false, // ถ้า login cookie httpOnly ต้องลบ httpOnly ด้วย
+        secure: true,
+        sameSite: "lax",
       });
       res.status(200).json({ message: "Logout successful" });
     } catch (error) {
