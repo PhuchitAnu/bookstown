@@ -108,7 +108,7 @@ export const UserController = {
         path: "/", // ต้องตรงกับ path ตอน login
         httpOnly: false, // ถ้า login cookie httpOnly ต้องลบ httpOnly ด้วย
         secure: true,
-        sameSite: "lax",
+        sameSite: "none",
       });
       res.status(200).json({ message: "Logout successful" });
     } catch (error) {
