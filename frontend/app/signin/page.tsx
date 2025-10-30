@@ -26,7 +26,11 @@ export default function AuthPage() {
             });
             // localStorage.setItem('token', res.data.token);
             Swal.fire({ icon: 'success', title: 'Login success', timer: 1200, showConfirmButton: false });
-            router.push(res.data.role === 'admin' ? '/backoffice/dashboard' : '/store');
+            if (res.data.role === 'admin') {
+                window.location.href = '/backoffice/dashboard';
+            } else {
+                window.location.href = '/store';
+            }
         } catch (error: any) {
             Swal.fire({
                 icon: 'error',
