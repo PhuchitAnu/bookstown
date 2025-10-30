@@ -72,6 +72,7 @@ export default function AccountPage() {
 
     const handleLogout = async () => {
         localStorage.removeItem('token');
+        localStorage.removeItem('role');
         Swal.fire({ icon: 'success', title: 'ออกจากระบบสำเร็จ', timer: 1200, showConfirmButton: false });
         router.push('/signin');
     };
