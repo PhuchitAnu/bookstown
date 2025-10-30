@@ -8,6 +8,7 @@ export function middleware(req: NextRequest) {
   const token = req.cookies.get("token")?.value;
 
   console.log("[Middleware] pathname:", pathname);
+  console.log("[Middleware] all cookies:", req.cookies.getAll());
   console.log("[Middleware] token:", token); // ดูว่ามี token หรือไม่
 
   if (!pathname.startsWith("/backoffice")) return NextResponse.next();
