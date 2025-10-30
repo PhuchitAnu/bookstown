@@ -4,12 +4,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 import cors from "cors";
-app.use(
-  cors({
-    origin: process.env.FRONTEND_URL,
-    credentials: true,
-  })
-);
+app.use(cors());
 
 import bodyParser from "body-parser";
 app.use(bodyParser.json());
@@ -39,7 +34,6 @@ app.get("/", (req, res) => {
 //
 app.post("/api/user/register", UserController.register);
 app.post("/api/user/signin", UserController.signin);
-app.post("/api/user/logout", UserController.logout);
 
 // protected (user + admin)
 app.get("/api/user/info", authenticateToken(), UserController.info);

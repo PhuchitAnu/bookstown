@@ -83,14 +83,6 @@ export const UserController = {
         { expiresIn: "8h" }
       );
 
-      res.cookie("token", token, {
-        httpOnly: true,
-        secure: true, // ใช้ HTTPS เท่านั้นใน production
-        sameSite: "none",
-        maxAge: 8 * 60 * 60 * 1000, // 8 ชั่วโมง
-        path: "/",
-      });
-
       res.status(200).json({
         token,
         name: user.name,
@@ -98,19 +90,6 @@ export const UserController = {
         id: user.id,
         email: user.email,
       });
-    } catch (error) {
-      res.status(500).json({ message: error.message });
-    }
-  },
-  logout: async (req, res) => {
-    try {
-      res.clearCookie("token", {
-        path: "/", // ต้องตรงกับ path ตอน login
-        httpOnly: true, // ถ้า login cookie httpOnly ต้องลบ httpOnly ด้วย
-        secure: true,
-        sameSite: "none",
-      });
-      res.status(200).json({ message: "Logout successful" });
     } catch (error) {
       res.status(500).json({ message: error.message });
     }

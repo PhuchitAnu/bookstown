@@ -30,12 +30,6 @@ export default function CheckoutPage() {
         QRCode.toDataURL(payload).then(setQr);
     }, []);
 
-    function getCookie(name: string) {
-        const value = `; ${document.cookie}`;
-        const parts = value.split(`; ${name}=`);
-        if (parts.length === 2) return parts.pop()?.split(';').shift();
-    }
-
     const handleCheckout = async () => {
         if (!name || !address || !phone) {
             Swal.fire('โปรดกรอกข้อมูลให้ครบถ้วน');
@@ -43,7 +37,7 @@ export default function CheckoutPage() {
         }
 
         try {
-            const token = getCookie("token");
+            const token = localStorage.getItem('token');;
             if (!token) return Swal.fire('กรุณาเข้าสู่ระบบก่อนทำการสั่งซื้อ');
 
             const decoded: any = JSON.parse(atob(token.split('.')[1]));
