@@ -23,6 +23,7 @@ export default function AuthPage() {
             const payload = { email, password };
             const res = await axios.post(`${apiConfig.apiUrl}/user/signin`, payload);
             localStorage.setItem('token', res.data.token);
+
             Swal.fire({ icon: 'success', title: 'Login success', timer: 1200, showConfirmButton: false });
             router.push(res.data.role === 'admin' ? '/backoffice/dashboard' : '/store');
         } catch (error: any) {
