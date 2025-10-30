@@ -3,12 +3,14 @@
 import Image from 'next/image';
 import Swal from 'sweetalert2';
 import { useRouter } from 'next/navigation';
+import axios from 'axios';
+import { apiConfig } from '../config';
 
 
 export default function Sidebar() {
     const router = useRouter();
-    const handleLogout = () => {
-        localStorage.removeItem('token');
+    const handleLogout = async () => {
+        await axios.post(`${apiConfig.apiUrl}/user/logout`, {}, { withCredentials: true });
         Swal.fire({ icon: 'success', title: 'ออกจากระบบสำเร็จ', timer: 1200, showConfirmButton: false });
         router.push('/signin');
     };

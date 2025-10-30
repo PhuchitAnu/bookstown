@@ -84,10 +84,11 @@ export const UserController = {
       );
 
       res.cookie("token", token, {
-        httpOnly: true, // ปลอดภัย: script อ่านไม่ได้
+        httpOnly: false,
         secure: process.env.NODE_ENV === "production", // ใช้ HTTPS เท่านั้นใน production
         sameSite: "strict",
         maxAge: 8 * 60 * 60 * 1000, // 8 ชั่วโมง
+        path: "/",
       });
 
       res.status(200).json({
@@ -101,7 +102,18 @@ export const UserController = {
       res.status(500).json({ message: error.message });
     }
   },
-
+  logout: async (req, res) => {
+    try {
+      res.clearCookie("token", {
+        path: "/", // ต้องตรงกับ path ตอน login
+        httpOnly: true, // ถ้า login cookie httpOnly ต้องลบ httpOnly ด้วย
+        sameSite: "strict",
+      });
+      res.status(200).json({ message: "Logout successful" });
+    } catch (error) {
+      res.status(500).json({ message: error.message });
+    }
+  },
   info: async (req, res) => {
     try {
       const headers = req.headers.authorization;

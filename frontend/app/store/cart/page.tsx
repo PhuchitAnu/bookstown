@@ -44,7 +44,7 @@ export default function CartPage() {
                                     </span>
                                     <button
                                         onClick={() => removeItem(item.id)}
-                                        className="ml-3 text-red-500 hover:underline"
+                                        className="ml-3 hover:underline bg-red-500 text-white px-2 py-1 rounded-md cursor-pointer"
                                     >
                                         ลบ
                                     </button>

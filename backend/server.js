@@ -39,6 +39,7 @@ app.get("/", (req, res) => {
 //
 app.post("/api/user/register", UserController.register);
 app.post("/api/user/signin", UserController.signin);
+app.post("/api/user/logout", UserController.logout);
 
 // protected (user + admin)
 app.get("/api/user/info", authenticateToken(), UserController.info);

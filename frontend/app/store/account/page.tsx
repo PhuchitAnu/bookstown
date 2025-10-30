@@ -33,9 +33,15 @@ export default function AccountPage() {
     const [loading, setLoading] = useState(true);
     const router = useRouter();
 
+    function getCookie(name: string) {
+        const value = `; ${document.cookie}`;
+        const parts = value.split(`; ${name}=`);
+        if (parts.length === 2) return parts.pop()?.split(';').shift();
+    }
+
     // fetch user + orders
     useEffect(() => {
-        const token = localStorage.getItem('token');
+        const token = getCookie("token");
         if (!token) {
             Swal.fire({
                 icon: 'warning',
@@ -70,15 +76,15 @@ export default function AccountPage() {
     }, [router]); // ✅ แค่ router
 
 
-    const handleLogout = () => {
-        localStorage.removeItem('token');
+    const handleLogout = async () => {
+        await axios.post(`${apiConfig.apiUrl}/user/logout`, {}, { withCredentials: true });
         Swal.fire({ icon: 'success', title: 'ออกจากระบบสำเร็จ', timer: 1200, showConfirmButton: false });
         router.push('/signin');
     };
 
     const handleProfileUpdate = async (e: React.FormEvent) => {
         e.preventDefault();
-        const token = localStorage.getItem('token');
+        const token = getCookie("token");
         if (!token) return;
 
         try {

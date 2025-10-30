@@ -54,10 +54,16 @@ export default function BookDetails() {
         fetchBook();
     }, [id]);
 
+    function getCookie(name: string) {
+        const value = `; ${document.cookie}`;
+        const parts = value.split(`; ${name}=`);
+        if (parts.length === 2) return parts.pop()?.split(';').shift();
+    }
+
     const handleAddToCart = () => {
         if (!book) return;
 
-        const token = localStorage.getItem('token');
+        const token = getCookie("token");
         if (!token) {
             Swal.fire({
                 icon: 'warning',
