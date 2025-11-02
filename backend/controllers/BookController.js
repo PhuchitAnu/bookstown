@@ -19,6 +19,7 @@ export const BookController = {
           author: req.body.author,
           year: req.body.year,
           description: req.body.description,
+          category: req.body.category,
           imageUrl: req.body.imageUrl,
           quantity: req.body.quantity,
           price: req.body.price,

@@ -242,7 +242,7 @@ export default function Page() {
 
             <Modal title="Add New Product" isOpen={isOpen} onClose={handleCloseModal}>
                 <div>ISBN</div>
-                <input className='input-field w-full' type="text" value={isbn} onChange={(e) => setIsbn(e.target.value)} />
+                <input className='input-field w-full' required type="text" value={isbn} onChange={(e) => setIsbn(e.target.value)} />
 
                 <div className='mt-2'>ชื่อหนังสือ</div>
                 <input className='input-field w-full' type="text" value={name} onChange={(e) => setName(e.target.value)} />
