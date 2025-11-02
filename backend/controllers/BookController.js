@@ -75,7 +75,19 @@ export const BookController = {
         where: {
           id: parseInt(req.params.id),
         },
-        data: req.body,
+        data: {
+          isbn: req.body.isbn,
+          name: req.body.name,
+          author: req.body.author,
+          year: req.body.year,
+          description: req.body.description,
+          category: req.body.category,
+          imageUrl: req.body.imageUrl,
+          quantity: req.body.quantity,
+          fullPrice: req.body.fullPrice,
+          price: req.body.price,
+          status: req.body.status,
+        },
       });
       res.json({ message: "Book updated successfully!!" });
     } catch (error) {
