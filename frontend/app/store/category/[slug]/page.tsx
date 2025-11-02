@@ -13,6 +13,7 @@ interface Book {
     name: string;
     author: string;
     price: number;
+    fullPrice: number;
     imageUrl: string;
 }
 
@@ -96,7 +97,8 @@ export default function CategoryPage() {
                             image={book.imageUrl || '/assets/images/noimage.png'}
                             title={book.name}
                             author={book.author}
-                            price={book.price.toString()}
+                            price={book.price}
+                            fullPrice={book.fullPrice}
                             onClick={() => router.push(`/store/${book.id}`)}
                         />
                     ))}

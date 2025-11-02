@@ -6,8 +6,8 @@ interface ProductCardProps {
     image: string;
     title: string;
     author: string;
-    price: string;
-    fullPrice: string;
+    price: number;
+    fullPrice: number;
     onClick?: () => void;
 }
 
@@ -31,8 +31,8 @@ export default function ProductCard({ image, title, author, price, fullPrice, on
                     <p className="text-sm text-gray-500 mt-1">{author}</p>
                 </div>
                 <span className="text-indigo-600 font-extrabold text-xl mt-4">
-                    <span className="text-gray-400/50 font-semibold text-base line-through mr-2">{fullPrice}฿</span>
-                    {price}฿
+                    <span className="text-gray-400/50 font-semibold text-base line-through mr-2">{fullPrice.toLocaleString()}฿</span>
+                    {price.toLocaleString()}฿
                 </span>
             </div>
         </div>

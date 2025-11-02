@@ -73,6 +73,7 @@ export default function SearchClient() {
                             title={book.name}
                             author={book.author}
                             price={book.price}
+                            fullPrice={book.fullPrice}
                             onClick={() => router.push(`/store/${book.id}`)}
                         />
                     ))}
