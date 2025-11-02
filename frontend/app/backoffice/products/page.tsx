@@ -16,6 +16,7 @@ export default function Page() {
     const [description, setDescription] = useState('');
     const [category, setCategory] = useState('');
     const [quantity, setQuantity] = useState(0);
+    const [fullPrice, setFullPrice] = useState(0);
     const [price, setPrice] = useState(0);
     const [status, setStatus] = useState('Instock');
     const [imageUrl, setImageUrl] = useState('');
@@ -60,6 +61,7 @@ export default function Page() {
                 category: category,
                 imageUrl: imageUrl,
                 quantity: quantity,
+                fullPrice: fullPrice,
                 price: price,
                 status: status,
             }
@@ -103,6 +105,7 @@ export default function Page() {
         setCategory(book.category);
         setImageUrl(book.imageUrl);
         setQuantity(book.quantity);
+        setFullPrice(book.fullPrice);
         setPrice(book.price);
         setId(book.id);
         setStatus(book.status);
@@ -168,6 +171,7 @@ export default function Page() {
         setCategory('');
         setImageUrl('');
         setQuantity(0);
+        setFullPrice(0);
         setPrice(0);
         setStatus('Instock');
     }
@@ -199,7 +203,8 @@ export default function Page() {
                                 <th className='product-th'>หมวดหมู่</th>
                                 <th className='product-th'>รูปภาพ</th>
                                 <th className='product-th'>จํานวน</th>
-                                <th className='product-th'>ราคา</th>
+                                <th className='product-th'>ราคาเต็ม</th>
+                                <th className='product-th'>ราคาสุทธิ</th>
                                 <th className='product-th'>สถานะ</th>
                                 <th className='product-th w-[110px]'></th>
                             </tr>
@@ -222,6 +227,7 @@ export default function Page() {
                                         />
                                     </td>
                                     <td className='product-td'>{book.quantity}</td>
+                                    <td className='product-td'>{book.fullPrice}</td>
                                     <td className='product-td'>{book.price}</td>
                                     <td className='product-td'>{book.status}</td>
                                     <td className='product-td'>
@@ -291,7 +297,10 @@ export default function Page() {
                 <div className='mt-2'>จํานวน</div>
                 <input className='input-field w-full' type="number" value={quantity} onChange={(e) => setQuantity(Number(e.target.value))} />
 
-                <div className='mt-2'>ราคา</div>
+                <div className='mt-2'>ราคาเต็ม</div>
+                <input className='input-field w-full' type="number" value={fullPrice} onChange={(e) => setFullPrice(Number(e.target.value))} />
+
+                <div className='mt-2'>ราคาสุทธิ</div>
                 <input className='input-field w-full' type="number" value={price} onChange={(e) => setPrice(Number(e.target.value))} />
 
                 <div className='mt-2'>สถานะ</div>

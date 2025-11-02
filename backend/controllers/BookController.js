@@ -22,6 +22,7 @@ export const BookController = {
           category: req.body.category,
           imageUrl: req.body.imageUrl,
           quantity: req.body.quantity,
+          fullPrice: req.body.fullPrice,
           price: req.body.price,
           status: req.body.status,
         },

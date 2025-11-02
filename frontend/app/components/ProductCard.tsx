@@ -7,10 +7,11 @@ interface ProductCardProps {
     title: string;
     author: string;
     price: string;
+    fullPrice: string;
     onClick?: () => void;
 }
 
-export default function ProductCard({ image, title, author, price, onClick }: ProductCardProps) {
+export default function ProductCard({ image, title, author, price, fullPrice, onClick }: ProductCardProps) {
     return (
         <div
             onClick={onClick}
@@ -29,7 +30,10 @@ export default function ProductCard({ image, title, author, price, onClick }: Pr
                     <h3 className="text-lg font-semibold text-gray-900 line-clamp-2">{title}</h3>
                     <p className="text-sm text-gray-500 mt-1">{author}</p>
                 </div>
-                <span className="text-indigo-600 font-bold text-lg mt-4">{price}฿</span>
+                <span className="text-indigo-600 font-extrabold text-xl mt-4">
+                    <span className="text-gray-400/50 font-semibold text-base line-through mr-2">{fullPrice}฿</span>
+                    {price}฿
+                </span>
             </div>
         </div>
     );

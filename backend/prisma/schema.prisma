@@ -36,6 +36,7 @@ model Books {
   category    String   @default("Fiction")
   imageUrl    String?
   quantity    Int
+  fullPrice   Float?
   price       Float
   status      String   @default("Instock")
   createdAt   DateTime @default(now()) @db.Timestamptz(3)
