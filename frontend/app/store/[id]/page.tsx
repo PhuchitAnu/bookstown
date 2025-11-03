@@ -15,6 +15,8 @@ interface Book {
     id: number;
     name: string;
     author: string;
+    year: string;
+    ISBN: string;
     category: string;
     price: number;
     fullPrice: number;
@@ -147,7 +149,9 @@ export default function BookDetails() {
                 <div className="flex flex-col flex-1 justify-between">
                     <div>
                         <h1 className="text-3xl font-bold text-gray-900">{book.name}</h1>
-                        <p className="text-gray-600 text-xl mt-1">{book.author}</p>
+                        <p className="text-gray-600 text-xl mt-1">{book.author}, {book.year}</p>
+                        <p className="text-gray-500 text-md mt-1">ISBN: {book.ISBN}</p>
+
                     </div>
 
                     <div className="mt-6">
