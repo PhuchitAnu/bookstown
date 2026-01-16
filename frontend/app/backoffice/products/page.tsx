@@ -292,7 +292,8 @@ export default function Page() {
                     alt={name}
                     className='my-2 rounded-lg border border-gray-200 object-cover'
                 />
-                <input className='file-input' type="file" onChange={handleFileUpload} />
+                <input type="text" className='input-field w-full' value={imageUrl} onChange={(e) => setImageUrl(e.target.value)} />
+                <input className='file-input mt-1' type="file" onChange={handleFileUpload} />
 
                 <div className='mt-2'>จํานวน</div>
                 <input className='input-field w-full' type="number" value={quantity} onChange={(e) => setQuantity(Number(e.target.value))} />
