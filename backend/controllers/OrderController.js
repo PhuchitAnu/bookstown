@@ -1,6 +1,4 @@
-import { PrismaClient } from "@prisma/client";
-import { create } from "domain";
-const prisma = new PrismaClient();
+import prisma from "../prisma/client.js";
 
 export const OrderController = {
   list: async (req, res) => {

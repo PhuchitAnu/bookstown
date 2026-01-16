@@ -8,10 +8,13 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server"
+    "start": "node server",
+    "dev": "node --env-file=.env.development server",
+    "start:prod": "node --env-file=.env.production server"
   },
   "dependencies": {
-    "@prisma/client": "^6.18.0",
+    "@prisma/adapter-pg": "^7.2.0",
+    "@prisma/client": "^7.2.0",
     "@types/node": "^24.9.0",
     "axios": "^1.12.2",
     "bcryptjs": "^3.0.2",
@@ -22,10 +25,11 @@
     "form-data": "^4.0.4",
     "jsonwebtoken": "^9.0.2",
     "multer": "^2.0.2",
+    "pg": "^8.17.1",
     "tsx": "^4.20.6",
     "typescript": "^5.9.3"
   },
   "devDependencies": {
-    "prisma": "^6.18.0"
+    "prisma": "^7.2.0"
   }
 }

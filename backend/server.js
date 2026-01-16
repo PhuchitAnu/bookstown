@@ -4,7 +4,32 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 import cors from "cors";
-app.use(cors());
+
+// Configure CORS based on environment
+const allowedOrigins = [
+  process.env.FRONTEND_URL,
+  "http://localhost:3000",
+  "https://bookstown.vercel.app",
+].filter(Boolean);
+
+app.use(
+  cors({
+    origin: function (origin, callback) {
+      // Allow requests with no origin (like mobile apps or curl requests)
+      if (!origin) return callback(null, true);
+
+      if (
+        allowedOrigins.some((allowed) =>
+          origin.startsWith(allowed.replace(/\/$/, ""))
+        )
+      ) {
+        return callback(null, true);
+      }
+      return callback(new Error("Not allowed by CORS"));
+    },
+    credentials: true,
+  })
+);
 
 import bodyParser from "body-parser";
 app.use(bodyParser.json());
