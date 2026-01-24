@@ -101,7 +101,7 @@ export default function StorePage() {
                         transition={{ duration: 0.5 }}
                         className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 place-items-center gap-8"
                     >
-                        {books.map((book) => (
+                        {books.slice(0, 24).map((book) => (
                             <ProductCard
                                 key={book.id}
                                 image={book.imageUrl || '/assets/images/noimage.png'}
