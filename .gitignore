@@ -23,6 +23,3 @@ Thumbs.db
 
 # Prisma generated
 prisma/migrations/
-
-# Agent
-.agent/
